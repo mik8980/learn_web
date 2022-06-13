@@ -14,6 +14,6 @@ def create_app():
         title = "Новости Python"
         weather = weather_by_city(app.config['WEATHER_DEFAULT_CITY'])
         news_list = get_python_news()
-        return render_template('index.html', page_title = title, weather = weather, news_list=news_list)
+        return render_template('index.html', page_title=title, weather=weather, news_list=news_list)
 
     return app

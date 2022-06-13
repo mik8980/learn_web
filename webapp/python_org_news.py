@@ -29,8 +29,10 @@ def get_python_news():
             except ValueError: 
                 published = datetime.now()
             save_news(title, url, published)
+    return News.query.order_by(News.published.desc()).all()
 
-    def save_news(title, url, published):
+def save_news(title, url, published):
+    if not News.query.filter(News.url == url).count():
         news_news = News(title=title, url=url, published=published)
         db.session.add(news_news)
         db.session.commit()
